@@ -9,8 +9,8 @@ echo "Hostname:"
 hostname
 
 echo
-echo "Uptime:"
-uptime -p
+echo "CPU Usage:"
+top -bn1 | grep "Cpu(s)" | sed 's/,/ /g' | awk '{for(i=1;i<=NF;i++) if($i ~ /id/) print 100-$(i-1)"%"}'
 
 echo
 echo "CPU Load:"
