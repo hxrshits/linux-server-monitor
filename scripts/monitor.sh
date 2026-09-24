@@ -1,5 +1,13 @@
 #!/bin/bash
 
+REPORT_DIR="reports"
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+REPORT_FILE="$REPORT_DIR/report_$TIMESTAMP.txt"
+
+mkdir -p "$REPORT_DIR"
+
+exec > >(tee "$REPORT_FILE") 2>&1
+
 echo "================================"
 echo "      SERVER HEALTH REPORT"
 echo "================================"
