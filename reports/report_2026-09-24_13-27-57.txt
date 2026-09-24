@@ -1,0 +1,40 @@
+================================
+      SERVER HEALTH REPORT
+================================
+
+Hostname:
+ITACHI
+
+CPU Usage:
+1.6%
+
+CPU Load:
+ 13:27:57 up 5 min,  1 user,  load average: 0.00, 0.01, 0.00
+
+Memory:
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       530Mi       6.6Gi       3.5Mi       660Mi       7.1Gi
+Swap:          2.0Gi          0B       2.0Gi
+
+Disk:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  1.6G  955G   1% /
+
+Network:
+lo               UNKNOWN        127.0.0.1/8 10.255.255.254/32 ::1/128 
+eth0             UP             172.19.161.110/20 fe80::215:5dff:fea7:fe59/64 
+
+Top Processes:
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.1  24124 15436 ?        Ss   13:22   0:00 /sbin/init
+root          86  0.1  0.1  35388 12332 ?        Ss   13:22   0:00 /usr/lib/systemd/systemd-udevd
+root         247  0.0  0.4 123460 32788 ?        Ssl  13:22   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         150  0.0  0.3  44096 29824 ?        Ss   13:22   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root          47  0.0  0.2  50396 16536 ?        S<s  13:22   0:00 /usr/lib/systemd/systemd-journald
+
+================================
+
+Health Status:
+CPU: NORMAL - 0.8%
+RAM: NORMAL - 7%
+Disk: NORMAL - 1%

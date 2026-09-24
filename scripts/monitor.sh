@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [ "$1" = "--watch" ]; then
+    while true
+    do
+        clear
+        ./scripts/monitor.sh
+        sleep 10
+    done
+fi
+
 REPORT_DIR="reports"
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 REPORT_FILE="$REPORT_DIR/report_$TIMESTAMP.txt"
