@@ -1,17 +1,20 @@
 # Linux Server Monitoring System
 
-A Bash-based Linux server monitoring tool that generates a simple health report containing CPU usage, memory usage, disk usage, uptime, network information, and running processes.
+A Bash-based Linux server monitoring tool that collects system health information, detects resource usage issues, generates timestamped reports, and supports continuous monitoring.
 
 ## Features
 
 - CPU usage monitoring
-- CPU load information
-- RAM and swap usage
-- Disk usage
+- CPU load monitoring
+- RAM and swap usage monitoring
+- Disk usage monitoring
 - System uptime
 - Network interface information
 - Top CPU-consuming processes
-- Simple terminal-based health report
+- CPU, RAM, and disk threshold alerts
+- Timestamped monitoring reports
+- Continuous monitoring mode
+- Terminal-based health reporting
 
 ## Technologies Used
 
@@ -22,9 +25,9 @@ A Bash-based Linux server monitoring tool that generates a simple health report 
 
 ## Requirements
 
-- Linux system
+- Linux
 - Bash
-- Standard Linux utilities such as:
+- Standard Linux utilities:
   - `top`
   - `awk`
   - `sed`
@@ -42,54 +45,70 @@ Clone the repository:
 
     git clone https://github.com/hxrshits/linux-server-monitor.git
 
-Move into the project directory:
+Enter the project directory:
 
     cd linux-server-monitor
 
-Make the monitoring script executable:
+Make the script executable:
 
     chmod +x scripts/monitor.sh
 
 ## Usage
 
-Run the monitoring script:
+### Normal Monitoring
+
+Run:
 
     ./scripts/monitor.sh
 
-The script will generate a server health report directly in the terminal.
+The script displays a server health report containing CPU, memory, disk, network, uptime, processes, and health status.
 
-## Example Output
+### Continuous Monitoring
 
-    =================================
-          SERVER HEALTH REPORT
-    =================================
+Run:
 
-    Hostname:
-    ITACHI
+    ./scripts/monitor.sh --watch
 
-    CPU Usage:
-    0%
+The monitoring screen refreshes automatically every 10 seconds.
 
-    CPU Load:
-    load average: 0.00, 0.01, 0.00
+Press:
 
-    Memory:
-    7.6Gi total
+    Ctrl + C
 
-    Disk:
-    1% used
+to stop continuous monitoring.
 
-    Network:
-    eth0 UP
+## Health Thresholds
 
-    Top Processes:
-    ...
+The script checks resource usage and reports the health status.
 
-## How It Works
+Example:
 
-The script collects system information using standard Linux commands and presents the results in a readable health report.
+    Health Status:
+    CPU: NORMAL - 0.8%
+    RAM: NORMAL - 7%
+    Disk: NORMAL - 1%
 
-The monitoring data represents the Linux system on which the script is executed. It does not monitor the developer's computer remotely.
+If a resource exceeds the configured threshold, the script reports:
+
+    WARNING
+
+The current thresholds are:
+
+- CPU: 80%
+- RAM: 80%
+- Disk: 80%
+
+## Reports
+
+Each monitoring run creates a timestamped report inside the `reports/` directory.
+
+Example:
+
+    reports/
+    ├── report_2026-09-24_18-30-15.txt
+    └── report_2026-09-24_18-30-25.txt
+
+These reports allow previous monitoring results to be retained for later review.
 
 ## Project Structure
 
@@ -101,25 +120,32 @@ The monitoring data represents the Linux system on which the script is executed.
     │   └── .gitkeep
     └── docs/
 
+## How It Works
+
+The Bash script collects information from the Linux system using standard command-line utilities.
+
+The collected information is processed and displayed as a server health report. Resource thresholds are then checked to identify potential issues.
+
+The monitoring script can either run once or continuously using the `--watch` option.
+
+The monitoring data represents the Linux system on which the script is executed.
+
 ## Future Improvements
 
-- CPU, RAM and disk usage thresholds
-- Warning and alert messages
-- Automatic report generation
-- Timestamped monitoring reports
 - Python-based monitoring
 - Service monitoring
 - Nginx monitoring
+- Email or notification alerts
+- Log rotation
+- Web-based monitoring dashboard
 - Cloud/AWS deployment
-- Automated monitoring and logging
 
 ## Author
 
 Harshit Saini
 
-GitHub:
-https://github.com/hxrshits
+GitHub: https://github.com/hxrshits
 
 ## License
 
-This project is open for learning and educational purposes.
+This project is intended for learning, portfolio, and educational purposes.
